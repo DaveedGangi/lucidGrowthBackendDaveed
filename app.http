@@ -4,5 +4,49 @@ GET http://localhost:3000/
 
 POST http://localhost:3000/blogs
 
+
+
+
+
 ###
 GET http://localhost:3000/blogsAll
+
+
+###
+
+POST http://localhost:3000/blogAdd 
+Content-Type: application/json
+
+{
+    "id":11,
+    "date":"03-04-2024",
+    "title":"Lion",
+    "author":"Elena Blessing",
+    "comments":"",
+    "description":"Photo of Lion on Grass Field",
+    "image":"https://images.pexels.com/photos/2674052/pexels-photo-2674052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+     
+}
+
+###
+
+DELETE http://localhost:3000/blogDelete/11 
+
+
+###
+
+PUT http://localhost:3000/blogUpdate/11
+Content-Type: application/json
+
+    {
+    "id":11,
+    "date":"03-05-2024",
+    "title":"Cheetah",
+    "author":"Magda Ehlers",
+    "comments":"",
+    "description":"Cheetah Lying on Brown Soil",
+    "image":"https://images.pexels.com/photos/8128514/pexels-photo-8128514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+     
+}

@@ -78,3 +78,45 @@ app.get("/blogsAll",async(request,response)=>{
     const dataFromTalbeAll=await database.all(dataFromTable);
     response.send(dataFromTalbeAll);
 })
+
+
+app.post("/blogAdd",async(request,response)=>{
+
+    const blogAdding=request.body 
+
+
+    const {id,date,title,author,comments,description,image}=blogAdding
+
+    const inserting=`INSERT INTO userblogtable(id,date,title,author,comments,description,image)
+    VALUES(${id},'${date}','${title}','${author}','${comments}','${description}','${image}');`;
+      
+    await database.run(inserting);
+    
+    response.send("blog added");
+    
+
+})
+
+app.delete("/blogDelete/:id",async(request,response)=>{
+
+    const {id}=request.params;
+    const deleting=`DELETE FROM userblogtable WHERE id=${id}`;
+    await database.run(deleting);
+ 
+    response.send("blog deleted");
+
+
+}
+)
+
+
+app.put("/blogUpdate/:id",async(request,response)=>{
+
+    const {id}=request.params;
+    const blogUpdating=request.body;
+    const {date,title,author,comments,description,image}=blogUpdating;
+    const updating=`UPDATE userblogtable SET date='${date}',title='${title}',author='${author}',comments='${comments}',description='${description}',image='${image}' WHERE id=${id}`;
+    
+    await database.run(updating);
+    response.send("blog updated");
+})
